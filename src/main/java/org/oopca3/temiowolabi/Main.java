@@ -10,45 +10,12 @@ public class Main {
         app.start();
     }
 
-    public void start() {
-        readStudentsFromFile();
-        readBookingFromFile();
-//        displayStudentDetails(students);
-    }
-
-    private void readStudentsFromFile() {
-        //Use try with resources and BufferedReader
-        try (Scanner studentFile = new Scanner(new BufferedReader(new FileReader("student_data.txt")))) {
-            while (studentFile.hasNextLine()) {
-                String input = studentFile.nextLine();
-                System.out.println(input);
-            }
-        } catch (FileNotFoundException fne) {
-            System.out.println(fne.getMessage());
-        }
-    }
-
-    private void writeNewStudent() {
-        FileWriter newStudent = null;
-        try {
-            newStudent = new FileWriter("student_data.txt");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    public void start()
+    {
+        StudentDB studentDb = new StudentDB();
+        studentDb.addStudent( new Student("Temi","Owolabi","D00227197", "D00227197@student.dkit.ie", "089 427 3427", "Null"));
+        studentDb.loadStudentsFromFile();
 
 
-    private void readBookingFromFile() {
-        //Use try with resources and BufferedReader
-        try (Scanner studentFile = new Scanner(new BufferedReader(new FileReader("booking.txt")))) {
-            while (studentFile.hasNextLine()) {
-                String input = studentFile.nextLine();
-
-                System.out.println(input);
-            }
-        } catch (FileNotFoundException fne) {
-            System.out.println(fne.getMessage());
-        }
     }
 }
