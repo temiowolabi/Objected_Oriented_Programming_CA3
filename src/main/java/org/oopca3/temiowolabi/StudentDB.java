@@ -9,24 +9,36 @@ public class StudentDB {
 
     private ArrayList<Student> studentList;
 
-    public StudentDB() {
+    public StudentDB()
+    {
         this.studentList = new ArrayList<>();
     }
 
-    public Student findStudentById(String id) {
+    public Student findStudentByStudentNumber(String studentNumber) {
         for(Student s : studentList ) {
-            if(s.getStudentNumber().equals(id))
+            if(s.getStudentNumber().equals(studentNumber))
                 return s;
         }
         return null;    // not found
     }
 
-    public void addStudent( Student s) {    //TODO prevent duplicates
-        studentList.add( s );
+    /*Link used for information on avoiding duplicates.*/
+//    https://stackoverflow.com/questions/19013855/java-avoid-inserting-duplicate-in-arraylist
+    public void addStudent( Student s) {
+        if(!studentList.contains(s)) //Checks if student number is in list before adding it. In reality it's checking for the whole list but the override methods in "Student Class", makes it only check the Student Number.
+        {
+            studentList.add( s ); //If student number is unique, the student will be added.
+        }
+        else
+        {
+            System.out.println(Colours.RED + "Duplicate Found. Student Numbers must be unique. Try again." + Colours.RESET); //If student number is NOT unique,
+                                                                                                                            // this message will display and the student number will not be displayed.
+        }
+        //studentList.add( s );
     }
 
-    public void removeStudentById( String id ) {
-        Student student = findStudentById( id );    //TODO check for null id
+    public void removeStudentById( String studentNumber ) {
+        Student student = findStudentByStudentNumber( studentNumber );    //TODO check for null id
         if( student != null)
             studentList.remove(student);
 
@@ -42,8 +54,6 @@ public class StudentDB {
         // studentList.add( new Student("D012","Frank","1998-10-26"));
         //  etc - hard code more values
 
-
-        System.out.println("Reading student DB from file...");
 
         try {
             Scanner sc = new Scanner(new File("student_data.txt"));
@@ -63,14 +73,18 @@ public class StudentDB {
                 studentList.add( new Student(fName, sName, studentNumber,  email, telephone, computerOnLoan));
 
             }
-            System.out.println("All students loaded");
             sc.close();
-            System.out.println("All Students: " + studentList); // print them all
+            System.out.println("All Students: \n" + studentList); // print them all
 
 
         } catch (IOException e) {
             System.out.println("IOException thrown in loadStudentsFromFile() "+e.getMessage());
         }
+
+    }
+
+    public void getStudentByStudentNumber(String studentNumber)
+    {
 
     }
 

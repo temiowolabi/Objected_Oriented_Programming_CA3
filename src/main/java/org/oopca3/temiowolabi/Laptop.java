@@ -1,13 +1,14 @@
 package org.oopca3.temiowolabi;
 
+import java.time.LocalDate;
+
 public class Laptop extends Computer
 {
     private double screenSize;
     private int batteryLife;
 
-    public Laptop(String manufacturer, String processor, int ramSize, int diskSize, double weight, String assertTag, String purchaseDate, double screenSize, int batteryLife)
-    {
-        super(manufacturer, processor, ramSize, diskSize, weight, assertTag, purchaseDate);
+    public Laptop(String manufacturer, String processor, int ramSize, int diskSize, double weight, String assertTag, String dateOfPurchase, double screenSize, int batteryLife) {
+        super(manufacturer, processor, ramSize, diskSize, weight, assertTag, dateOfPurchase);
         this.screenSize = screenSize;
         this.batteryLife = batteryLife;
     }

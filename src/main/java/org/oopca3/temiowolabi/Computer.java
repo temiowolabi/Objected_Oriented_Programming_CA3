@@ -1,16 +1,18 @@
 package org.oopca3.temiowolabi;
 
-public class Computer
+import java.time.LocalDate;
+
+abstract public class Computer
 {
     private String Manufacturer;
     private String Processor;
     private int ramSize;
     private int diskSize;
     private double Weight;
-    private String assertTag;
-    private String purchaseDate;
+    private String assertTag; //every computer has this so they will all inherit this.
+    private LocalDate purchaseDate;
 
-    public Computer(String manufacturer, String processor, int ramSize, int diskSize, double weight, String assertTag, String purchaseDate)
+    public Computer(String manufacturer, String processor, int ramSize, int diskSize, double weight, String assertTag, String dateOfPurchase)
     {
         Manufacturer = manufacturer;
         Processor = processor;
@@ -18,7 +20,7 @@ public class Computer
         this.diskSize = diskSize;
         Weight = weight;
         this.assertTag = assertTag;
-        this.purchaseDate = purchaseDate;
+        purchaseDate = LocalDate.parse(dateOfPurchase);
     }
 
     public String getManufacturer() {
@@ -45,7 +47,11 @@ public class Computer
         return assertTag;
     }
 
-    public String getPurchaseDate() {
+    public void setAssertTag(String assertTag) {
+        this.assertTag = assertTag;
+    }
+
+    public LocalDate getPurchaseDate() {
         return purchaseDate;
     }
 

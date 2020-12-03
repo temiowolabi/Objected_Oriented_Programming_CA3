@@ -56,21 +56,17 @@ public class Student
                 " Computer On Loan = " + computerOnLoan + '\n';
     }
 
+    //Checking if the student numbers are equal.
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return Objects.equals(fName, student.fName) &&
-                Objects.equals(sName, student.sName) &&
-                Objects.equals(studentNumber, student.studentNumber) &&
-                Objects.equals(email, student.email) &&
-                Objects.equals(telephone, student.telephone) &&
-                Objects.equals(computerOnLoan, student.computerOnLoan);
+        return Objects.equals(studentNumber, student.studentNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fName, sName, studentNumber, email, telephone, computerOnLoan);
+        return Objects.hash(studentNumber);
     }
 }
