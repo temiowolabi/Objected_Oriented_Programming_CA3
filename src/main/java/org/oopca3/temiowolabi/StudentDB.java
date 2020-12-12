@@ -1,6 +1,6 @@
 package org.oopca3.temiowolabi;
 
-import java.io.File;
+import java.io.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -8,85 +8,121 @@ import java.util.Scanner;
 public class StudentDB {
 
     private ArrayList<Student> studentList;
+    private static Scanner keyboard = new Scanner(System.in);
 
     public StudentDB()
     {
         this.studentList = new ArrayList<>();
     }
 
-    public Student findStudentByStudentNumber(String studentNumber) {
-        for(Student s : studentList ) {
-            if(s.getStudentNumber().equals(studentNumber))
-                return s;
+    public void loadStudentsFromFile() {
+
+        try(Scanner studentsFile = new Scanner(new BufferedReader(new FileReader("students_data.txt"))))
+        {
+            String input;
+            while(studentsFile.hasNextLine())
+            {
+                input = studentsFile.nextLine();
+                String[] data = input.split(",");
+                String name = data[0];
+                String studentNumber = data[1];
+                String email = data[2];
+                String telephone = data[3];
+                String computerOnLoan = data[4];
+
+                Student readInPlayer = new Student(name, studentNumber, email, telephone, computerOnLoan);
+                this.studentList.add(readInPlayer);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-        return null;    // not found
+
     }
 
-    /*Link used for information on avoiding duplicates.*/
-//    https://stackoverflow.com/questions/19013855/java-avoid-inserting-duplicate-in-arraylist
-    public void addStudent( Student s) {
-        if(!studentList.contains(s)) //Checks if student number is in list before adding it. In reality it's checking for the whole list but the override methods in "Student Class", makes it only check the Student Number.
+    public void saveStudentsToFile()
+    {
+        try(BufferedWriter studentsFile = new BufferedWriter(new FileWriter("students_data.txt") ))
         {
-            studentList.add( s ); //If student number is unique, the student will be added.
+            for(Student student : studentList)
+            {
+                studentsFile.write(student.getName() +","+student.getStudentNumber()+","+student.getEmail()+","+student.getTelephone() +","+student.getComputerOnLoan() );
+                studentsFile.write("\n");
+            }
+        }
+        catch(IOException ioe)
+        {
+                System.out.println(Colours.BLUE + "Could not save students." +Colours.RESET);
+        }
+    }
+
+    public static void printStudentMainMenu()
+    {
+        System.out.println("\n Options to select:");
+        for(int i=0; i < StudentsMainMenu.values().length;i++)
+        {
+            System.out.println("\t" + Colours.BLUE + i + ". " + StudentsMainMenu.values()[i].toString() + Colours.RESET);
+        }
+        System.out.println("Enter a number to select option (enter 0 to cancel):>");
+    }
+
+
+    public void addStudent()
+    {
+        String name = enterField("Student Name");
+        String studentNumber = enterField("Student Number");
+        String email = enterField("Email");
+        String telephone = enterField("Telephone");
+        String computerOnLoan = enterField("Computer On Loan");
+        Student addition = new Student(name, studentNumber, email, telephone, computerOnLoan);
+        if(!studentList.contains(addition)) //Checks if student number is in list before adding it. In reality it's checking for the whole list but the override methods in "Student Class", makes it only check the Student Number.
+        {
+            studentList.add( addition ); //If student number is unique, the student will be added.
         }
         else
         {
             System.out.println(Colours.RED + "Duplicate Found. Student Numbers must be unique. Try again." + Colours.RESET); //If student number is NOT unique,
-                                                                                                                            // this message will display and the student number will not be displayed.
+            // this message will display and the student number will not be displayed.
         }
-        //studentList.add( s );
+       // studentList.add(addition);
     }
 
-    public void removeStudentById( String studentNumber ) {
-        Student student = findStudentByStudentNumber( studentNumber );    //TODO check for null id
-        if( student != null)
-            studentList.remove(student);
 
-    }
-
-    public void loadStudentsFromFile() {
-        // open 'students.txt' file
-        // read records and instantiate new Student objects
-        // add each new student object to studentList
-        // end.
-
-        // Could initially hardcode some values here instead of reading from file
-        // studentList.add( new Student("D012","Frank","1998-10-26"));
-        //  etc - hard code more values
-
-
-        try {
-            Scanner sc = new Scanner(new File("student_data.txt"));
-
-            while (sc.hasNext()) {
-
-
-                String fName = sc.next();
-                String sName = sc.next();
-                String studentNumber = sc.next();
-                String email = sc.next();
-                String telephone = sc.next();
-                String computerOnLoan = sc.next();
-
-                //System.out.println("First Name: " + fName + " Surname: " + sName + " Student Number: " + studentNumber + " Email: " + email+ " Telephone: " + telephone + " Computer On Loan: " + computerOnLoan);
-                //System.out.println("Name: " + name + " Student Number: " + studentNumber + " Email: " + email+ " Telephone: " + telephone + " Computer On Loan: " + computerOnLoan);
-                studentList.add( new Student(fName, sName, studentNumber,  email, telephone, computerOnLoan));
-
-            }
-            sc.close();
-            System.out.println("All Students: \n" + studentList); // print them all
-
-
-        } catch (IOException e) {
-            System.out.println("IOException thrown in loadStudentsFromFile() "+e.getMessage());
-        }
-
-    }
-
-    public void getStudentByStudentNumber(String studentNumber)
+    private String enterField(String field)
     {
-
+        String input;
+        System.out.println("Enter Student " + field + ":> ");
+        input = keyboard.nextLine();
+        return input;
     }
+
+    public void deleteStudent()
+    {
+        System.out.println("Enter ID to delete:> ");
+        String studentNumber = keyboard.nextLine();
+        Student studentToRemove = findStudent(studentNumber);
+        studentList.remove(studentToRemove);
+    }
+
+    public void printStudent()
+    {
+        System.out.println("Enter ID to print:> ");
+        String studentNumber = keyboard.nextLine();
+        Student student = findStudent(studentNumber);
+        System.out.println(student);
+    }
+
+    private Student findStudent(String studentNumber)
+    {
+        for(Student student : studentList)
+        {
+            if(student.getStudentNumber().equals(studentNumber))
+            {
+                return student;
+            }
+        }
+        return null;
+    }
+
 
 
 

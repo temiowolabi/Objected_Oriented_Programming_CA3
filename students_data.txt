@@ -1,0 +1,16 @@
+Ben Walker,D001228292,ben.walker@dkit.ie,087-3849739,DKIT-24105
+Dotty Meyer,D002526806,dotty.meyer@dkit.ie,083-3399778,DKIT-83910
+Nisha Redfern,D0004820520,nisha.redfern@dkit.ie,083-1938103,DKIT-74929
+Nabilah Golden,D0084027592,nabilah.golden@dkit.ie,085-0380193,DKIT-64802
+Layla-Rose Carson,D0010382042,layla_rose.walker@dkit.ie,089-8492048,DKIT-24105
+Gregor Meza,D0093028592,gregor.meza@dkit.ie,083-8301837,DKIT-24105
+Khadija Armstrong,D0083028402,khadija.armstrong@dkit.ie,089-9203920,DKIT-24105
+Connagh Sims,D00048205829,connagh.sims@dkit.ie,083-3789234,DKIT-24105
+Ianis Juarez,D0028492048,ianis.juarez@dkit.ie,087-0214375,DKIT-24105
+Zhane Nash,D0038205820,zhane.nash@dkit.ie,086-1128402,DKIT-83910
+Neel Robins,D0058205820,neel.robins@dkit.ie,087-0931224,DKIT-24105
+Asim Burt,D0038304829,asim.burt@dkit.ie,083-2901343,DKIT-39103
+Sufyaan Hackett,D0018393752,sufyaan.hackett@dkit.ie,086-1128402,DKIT-74820
+Avery Nairn,D00936592,avery.nairn@dkit.ie,089-0313993,DKIT-29103
+Nadeem Castro,D009482641,nadeem.castro@dkit.ie,087-2333489,DKIT-48103
+Ben Walker,D001356913,ben.walker1@dkit.ie,083-0932091,DKIT-64802

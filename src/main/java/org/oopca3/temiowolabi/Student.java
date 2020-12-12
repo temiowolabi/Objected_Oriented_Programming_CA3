@@ -4,29 +4,40 @@ import java.util.Objects;
 
 public class Student
 {
-    private String fName;
-    private String sName;
+    //    private String fName;
+//    private String sName;
+    private String name;
     private String studentNumber;
     private String email;
     private String telephone;
     private String computerOnLoan;
 
-    public Student(String fName, String SName, String studentNumber, String email, String telephone, String computerOnLoan)
+    public Student(String name, String studentNumber, String email, String telephone, String computerOnLoan)
     {
-        this.fName = fName;
-        this.sName = SName;
+//        this.fName = fName;
+//        this.sName = SName;
+        this.name = name;
         this.studentNumber = studentNumber;
         this.email = email;
         this.telephone = telephone;
         this.computerOnLoan = computerOnLoan;
     }
 
-    public String getfName() {
-        return fName;
+    public Student() {
+
     }
 
-    public String getsName() {
-        return sName;
+//    public String getfName() {
+//        return fName;
+//    }
+//
+//    public String getsName() {
+//        return sName;
+//    }
+
+
+    public String getName() {
+        return name;
     }
 
     public String getStudentNumber() {
@@ -47,12 +58,11 @@ public class Student
 
     @Override
     public String toString() {
-        return '\n' + "Student Information: " +
-                "First Name = " + fName +
-                " Surname = " + sName  +
-                " Student Number = " + studentNumber  +
-                " Email = " + email +
-                " Telephone = " + telephone +
+        return '\n' + "Student Information: " + '\n' +
+                " Student Name = " + name + '\n' +
+                " Student Number = " + studentNumber  + '\n' +
+                " Email = " + email + '\n' +
+                " Telephone = " + telephone + '\n' +
                 " Computer On Loan = " + computerOnLoan + '\n';
     }
 

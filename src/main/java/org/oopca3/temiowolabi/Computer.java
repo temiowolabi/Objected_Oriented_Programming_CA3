@@ -1,8 +1,11 @@
 package org.oopca3.temiowolabi;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
-abstract public class Computer
+//abstract
+
+public class Computer
 {
     private String Manufacturer;
     private String Processor;
@@ -10,17 +13,20 @@ abstract public class Computer
     private int diskSize;
     private double Weight;
     private String assertTag; //every computer has this so they will all inherit this.
-    private LocalDate purchaseDate;
+    private String purchaseDate;
+//    private LocalDate purchaseDate;
 
-    public Computer(String manufacturer, String processor, int ramSize, int diskSize, double weight, String assertTag, String dateOfPurchase)
+
+    public Computer(String manufacturer, String processor, int ramSize, int diskSize, double weight, String assertTag, String purchaseDate)//String dateOfPurchase
     {
-        Manufacturer = manufacturer;
-        Processor = processor;
+        this.Manufacturer = manufacturer;
+        this.Processor = processor;
         this.ramSize = ramSize;
         this.diskSize = diskSize;
-        Weight = weight;
+        this.Weight = weight;
         this.assertTag = assertTag;
-        purchaseDate = LocalDate.parse(dateOfPurchase);
+        this.purchaseDate = purchaseDate;
+//        this.purchaseDate = LocalDate.parse(dateOfPurchase);
     }
 
     public String getManufacturer() {
@@ -51,9 +57,12 @@ abstract public class Computer
         this.assertTag = assertTag;
     }
 
-    public LocalDate getPurchaseDate() {
+    public String getPurchaseDate() {
         return purchaseDate;
     }
+//    public LocalDate getPurchaseDate() {
+//        return purchaseDate;
+//    }
 
     @Override
     public String toString() {
@@ -64,7 +73,7 @@ abstract public class Computer
                 ", diskSize=" + diskSize +
                 ", Weight=" + Weight +
                 ", assertTag='" + assertTag + '\'' +
-                ", purchaseDate='" + purchaseDate + '\'' +
+                ", purchaseDate=" + purchaseDate +
                 '}';
     }
 }
