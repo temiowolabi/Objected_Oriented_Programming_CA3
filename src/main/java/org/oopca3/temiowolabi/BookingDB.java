@@ -158,9 +158,14 @@ public class BookingDB
     }
 
 
-
-    public void returnComputer (String studentNumber, String computerID)
+    private void getAverage()
     {
-        
+        LocalDateTime start = bookingList.getBookingTimeDate();
     }
+
+
+//    public void returnComputer (String studentNumber, String computerID)
+//    {
+//
+//    }
 }
