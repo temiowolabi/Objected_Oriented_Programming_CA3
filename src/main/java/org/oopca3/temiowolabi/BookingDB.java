@@ -15,11 +15,11 @@ public class BookingDB
         this.bookingList = new ArrayList<>();
     }
 
-    public void addBooking (String studentNumber, String computerID) //don't forget to add date of booking. Can use LocalDateTime thing for current date.
-    {
-        Booking newBooking = new Booking();
-        bookingList.add( newBooking );
-    }
+//    public void addBooking (String studentNumber, String computerID) //don't forget to add date of booking. Can use LocalDateTime thing for current date.
+//    {
+//        Booking newBooking = new Booking();
+//        bookingList.add( newBooking );
+//    }
 
     public void loadBookingsFromFile() {
 
@@ -41,8 +41,8 @@ public class BookingDB
                 this.bookingList.add(readInPlayer);
             }
 
-        } catch (IOException e) {
-            System.out.println("IOException thrown in loadBookingsFromFile() "+e.getMessage());
+        } catch (FileNotFoundException fne) {
+            System.out.println("IOException thrown in loadBookingsFromFile() "+fne.getMessage());
         }
 
     }

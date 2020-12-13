@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
 
 public class Booking extends Student {
     private String bookingID;
-    private String bookingTimeDate;
-    private String returnTimeDate;
+    private LocalDateTime bookingTimeDate;
+    private LocalDateTime returnTimeDate;
     private String computerType;
     private String assertTag;
     private String studentNumber;
@@ -23,10 +23,13 @@ public class Booking extends Student {
 
     }
 
-    public Booking(String bookingID, String bookingTimeDate, String returnTimeDate, String computerType, String assertTag, String studentNumber) {
+    public Booking(String bookingID, String borrowComp, String returnComp, String computerType, String assertTag, String studentNumber) {
+        super();
         this.bookingID = bookingID;
-        this.bookingTimeDate = bookingTimeDate;
-        this.returnTimeDate = returnTimeDate;
+//        this.bookingTimeDate = bookingTimeDate;
+//        this.returnTimeDate = returnTimeDate;
+        this.bookingTimeDate = LocalDateTime.parse(borrowComp);
+        this.returnTimeDate = LocalDateTime.parse(returnComp);
         this.computerType = computerType;
         this.assertTag = assertTag;
         this.studentNumber = studentNumber;
@@ -36,11 +39,11 @@ public class Booking extends Student {
         return bookingID;
     }
 
-    public String getBookingTimeDate() {
+    public LocalDateTime getBookingTimeDate() {
         return bookingTimeDate;
     }
 
-    public String getReturnTimeDate() {
+    public LocalDateTime getReturnTimeDate() {
         return returnTimeDate;
     }
 
