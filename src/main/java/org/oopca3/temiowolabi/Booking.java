@@ -9,7 +9,6 @@ public class Booking extends Student {
     private String computerType;
     private String assertTag;
     private String studentNumber;
-   // private String computerID;
 
     private static int nextBookingID = 0;// Next Booking ID
     // 'static' makes this a class variable, so all objects share this one
@@ -24,8 +23,6 @@ public class Booking extends Student {
     public Booking(String bookingID, String borrowComp, String returnComp, String computerType, String assertTag, String studentNumber) {
         super();
         this.bookingID = bookingID;
-//        this.bookingTimeDate = bookingTimeDate;
-//        this.returnTimeDate = returnTimeDate;
         this.bookingTimeDate = LocalDateTime.parse(borrowComp);
         if(!returnComp.isEmpty())
         {

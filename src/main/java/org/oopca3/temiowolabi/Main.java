@@ -10,9 +10,9 @@ import java.util.InputMismatchException;
         private static Scanner keyboard = new Scanner(System.in);
         public static void main( String[] args )
         {
-            System.out.println( Colours.BLUE + "Welcome to the player App" + Colours.RESET);
-        Main studentDBApp = new Main();
-        studentDBApp.start();
+            System.out.println( Colours.PURPLE + "Welcome to the Booking System." + Colours.RESET);
+        Main bookingSystem = new Main();
+            bookingSystem.start();
         }
 
         private void start()
@@ -56,7 +56,7 @@ import java.util.InputMismatchException;
                     keyboard.nextLine();
                 }
             }
-            System.out.println(Colours.BLUE + "Thanks for using the app" + Colours.RESET);
+            System.out.println(Colours.PURPLE + "Thanks for using the app" + Colours.RESET);
         }
 
         private void doStudentsMainMenuLoop(StudentDB studentDB)
@@ -167,7 +167,7 @@ import java.util.InputMismatchException;
             System.out.println("\n Select One The Following Options: ");
             for(int i=0; i < StudentsMainMenu.values().length;i++)
             {
-                System.out.println("\t" + Colours.BLUE + i + ". " + StudentsMainMenu.values()[i].toString() + Colours.RESET);
+                System.out.println("\t" + Colours.PURPLE + i + ". " + StudentsMainMenu.values()[i].toString() + Colours.RESET);
             }
             System.out.print("Enter a number to select option (enter 0 to quit):>");
         }
@@ -177,7 +177,7 @@ import java.util.InputMismatchException;
             System.out.println("\n Select One The Following Options: ");
             for (int i = 0; i < BookingsMainMenu.values().length; i++)
             {
-                System.out.println("\t" + Colours.BLUE + i + ". " + BookingsMainMenu.values()[i].toString() + Colours.RESET);
+                System.out.println("\t" + Colours.PURPLE + i + ". " + BookingsMainMenu.values()[i].toString() + Colours.RESET);
             }
             System.out.println("Enter a number to select option (enter 0 to quit):>");//Don't allow duplicates, ID values unique
         }
@@ -187,7 +187,7 @@ import java.util.InputMismatchException;
             System.out.println("\n Options to select:");
             for(int i=0; i < MainMenu.values().length;i++)
             {
-                System.out.println("\t" + Colours.BLUE + i + ". " + MainMenu.values()[i].toString() + Colours.RESET);
+                System.out.println("\t" + Colours.PURPLE + i + ". " + MainMenu.values()[i].toString() + Colours.RESET);
             }
             System.out.print("Enter a number to select option (enter 0 to quit):>");
         }

@@ -86,7 +86,6 @@ public class BookingDB
             System.out.println(Colours.RED + "Duplicate Found. There is already a booking under this ID. Try again." + Colours.RESET); //If student number is NOT unique,
             // this message will display and the student number will not be displayed.
         }
-       // bookingList.add(addition);
     }
 
     public void printAllBookings()
