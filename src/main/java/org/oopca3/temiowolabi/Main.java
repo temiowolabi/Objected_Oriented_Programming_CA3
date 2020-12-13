@@ -21,8 +21,6 @@ import java.util.InputMismatchException;
         BookingDB bookingDB = new BookingDB();
         studentDB.loadStudentsFromFile();
         bookingDB.loadBookingsFromFile();
-        doStudentsMainMenuLoop(studentDB);
-        doBookingsMainMenuLoop(bookingDB);
         doMainMenuLoop(studentDB, bookingDB);
         }
 
@@ -138,6 +136,15 @@ import java.util.InputMismatchException;
                             break;
                         case DELETE_BOOKING:
                             bookingDB.deleteBooking();
+                            break;
+                        case AVERAGE_LENGTH:
+                            bookingDB.getAverage();
+                            break;
+                        case BOOKINGS_IN_ORDER:
+                            bookingDB.bookingsInAscendingOrder();
+                            break;
+                        case RETURN_BOOKING:
+                            bookingDB.returnComputer();
                             break;
                     }
                 } catch (InputMismatchException ime) {

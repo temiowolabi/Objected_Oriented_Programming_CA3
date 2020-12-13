@@ -27,7 +27,10 @@ public class Booking extends Student {
 //        this.bookingTimeDate = bookingTimeDate;
 //        this.returnTimeDate = returnTimeDate;
         this.bookingTimeDate = LocalDateTime.parse(borrowComp);
-        this.returnTimeDate = LocalDateTime.parse(returnComp);
+        if(!returnComp.isEmpty())
+        {
+            this.returnTimeDate = LocalDateTime.parse(returnComp);
+        }
         this.computerType = computerType;
         this.assertTag = assertTag;
         this.studentNumber = studentNumber;
@@ -43,6 +46,10 @@ public class Booking extends Student {
 
     public LocalDateTime getReturnTimeDate() {
         return returnTimeDate;
+    }
+
+    public void setReturnTimeDate(LocalDateTime returnTimeDate) {
+        this.returnTimeDate = returnTimeDate;
     }
 
     public String getComputerType() {

@@ -33,8 +33,8 @@ public class StudentDB {
                 Student readInPlayer = new Student(name, studentNumber, email, telephone, computerOnLoan);
                 this.studentList.add(readInPlayer);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException fne) {
+            System.out.println("Can't find the file. Try again. "+fne.getMessage());
         }
 
     }

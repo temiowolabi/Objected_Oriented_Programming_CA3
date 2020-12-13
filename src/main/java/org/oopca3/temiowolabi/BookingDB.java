@@ -1,10 +1,9 @@
 package org.oopca3.temiowolabi;
 
 import java.io.*;
-import java.time.LocalDate;
+import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class BookingDB
 {
@@ -14,12 +13,6 @@ public class BookingDB
     public BookingDB() {
         this.bookingList = new ArrayList<>();
     }
-
-//    public void addBooking (String studentNumber, String computerID) //don't forget to add date of booking. Can use LocalDateTime thing for current date.
-//    {
-//        Booking newBooking = new Booking();
-//        bookingList.add( newBooking );
-//    }
 
     public void loadBookingsFromFile() {
 
@@ -42,7 +35,7 @@ public class BookingDB
             }
 
         } catch (FileNotFoundException fne) {
-            System.out.println("IOException thrown in loadBookingsFromFile() "+fne.getMessage());
+            System.out.println("Can't find the file. Try again. "+fne.getMessage());
         }
 
     }
@@ -158,14 +151,68 @@ public class BookingDB
     }
 
 
-    private void getAverage()
+    public void getAverage()
     {
-        LocalDateTime start = bookingList.getBookingTimeDate();
+        LocalDateTime start;
+        LocalDateTime end;
+
+        double averageValue = 0;
+        double sum = 0;
+
+        if (bookingList.size() > -1) {
+            for (Booking booking : bookingList) {
+                start = booking.getBookingTimeDate();
+                end = booking.getReturnTimeDate();
+
+                long difference = Duration.between(start, end).toSeconds();
+
+                long secsInMin = 60;
+                long secsInHour = 60 * 60;
+                long secsInDay = 60 * 60 * 24;
+
+                long days = difference / secsInDay;   // integer division
+                long daysDivisionResidueMillis = difference - (days * secsInDay); // subtract days to get remaining hours
+
+                long hours = daysDivisionResidueMillis / secsInHour;
+                long hoursDivisionResidueMillis = daysDivisionResidueMillis - (hours * secsInHour);
+
+                long minutes = hoursDivisionResidueMillis / secsInMin;
+                long minutesDivisionResidueMillis = hoursDivisionResidueMillis - (minutes * secsInMin);
+
+
+                sum = days + hours + minutes;
+
+            }
+            averageValue = (sum / (double)bookingList.size());
+
+        }
+        System.out.printf("Average length of bookings: %.2f", averageValue);
+    }
+
+    public void bookingsInAscendingOrder()
+    {
+        datesInAscendingOrder inOrder = new datesInAscendingOrder();
+
+        Collections.sort(bookingList, inOrder);
+        System.out.println(bookingList);
+    }
+
+    public void returnComputer()
+    {
+        System.out.println("Enter ID to print:> ");
+        String studentNumber = keyboard.nextLine();
+        Student student = findBooking(studentNumber);
+        System.out.println(student);
+
+        Booking booking = new Booking();
+
+        LocalDateTime now = LocalDateTime.now();
+
+        booking.setReturnTimeDate(now);
+
+
+    }
     }
 
 
-//    public void returnComputer (String studentNumber, String computerID)
-//    {
-//
-//    }
-}
+
